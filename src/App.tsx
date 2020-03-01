@@ -6,13 +6,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 
 function App() {
   return (
-    <Router>
+    <Router basename="/datavis">
       <div className="has-background-grey-lighter">
         <div style={{}}>
           <div className="navbar has-background-white" role="navigation">
             <div className="navbar-brand">
               <Link to="/" className="navbar-item">
-                <img src="/datavis.svg" width="30" alt="" />
                 <p className="title is-4" style={{ marginLeft: 10 }}>
                   DataVis
                 </p>
