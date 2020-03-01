@@ -1,0 +1,75 @@
+{
+  "name": "minard",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://rcarriga.github.io/datavis",
+  "dependencies": {
+    "@material-ui/core": "^4.9.4",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.4.1",
+    "@testing-library/user-event": "^10.0.0",
+    "@types/chroma-js": "^2.0.0",
+    "@types/jest": "^25.1.3",
+    "@types/node": "^13.7.4",
+    "@types/papaparse": "^5.0.3",
+    "@types/react": "^16.9.22",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-router": "^5.1.4",
+    "@types/react-router-dom": "^5.1.3",
+    "bulma": "^0.8.0",
+    "chroma-js": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "font-awesome": "^4.7.0",
+    "node-sass": "^4.13.1",
+    "papaparse": "^5.1.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "typescript": "~3.8.2",
+    "victory": "^34.1.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-react-app": "^5.2.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-flowtype": "4.x",
+    "eslint-plugin-immutable": "^1.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.4.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "gh-pages": "^2.2.0",
+    "prettier": "^1.19.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
