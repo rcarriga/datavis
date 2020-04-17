@@ -18,11 +18,12 @@ export default Words
 
 const useOptions = (data: Data): Highcharts.Options => {
   const isBubble = useRef(true)
-  const [empty, setEmpty] = useState(false)
+  const [, setEmpty] = useState(false)
   const wordTotals = _.mapValues(data.words, (counts) => counts.slice(0, 25).reduce((sum, val) => sum + val[1], 0))
   const formatted = formatWordCounts(data.words)
   return {
     chart: {
+      animation: false,
       type: isBubble.current ? "packedbubble" : "column",
       height: "70%",
       events: {
@@ -47,13 +48,14 @@ const useOptions = (data: Data): Highcharts.Options => {
     plotOptions: {
       series: {
         stacking: "normal",
+        animation: false,
       },
       packedbubble: {
         minSize: "20%",
         maxSize: "100%",
         layoutAlgorithm: {
+          gravitationalConstant: 0.2,
           splitSeries: true,
-          seriesInteraction: false,
           parentNodeLimit: true,
         },
         dataLabels: {
@@ -90,7 +92,7 @@ const formatWordCounts = (wordCounts: WordCounts) => {
   const wordMaps = _.mapValues(wordCounts, (counts) =>
     counts.reduce((wordMap, val) => ({ ...wordMap, [val[0]]: val[1] }), {} as { [word: string]: number })
   )
-  const axisOrder = _.union(..._.map(wordCounts, (counts) => counts.slice(0, 25).map((val) => val[0])))
+  const axisOrder = _.union(..._.map(wordCounts, (counts) => counts.slice(0, 25).map((val) => val[0]))).sort()
   return {
     xAxis: axisOrder,
     data: (_.mapValues(wordCounts, (__, decision: Decision) =>
