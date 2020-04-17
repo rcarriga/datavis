@@ -1,14 +1,15 @@
 import Welcome from "components/welcome"
 import Minard from "graphs/Minard"
 import Nightingale from "graphs/Nightingale"
+import Planning from "graphs/Planning"
 import React from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 
 function App() {
   return (
     <Router basename="/datavis">
-      <div className="has-background-grey-lighter">
-        <div style={{}}>
+      <div className="has-background-grey-lighter" style={{ height: "100%" }}>
+        <div>
           <div className="navbar has-background-white" role="navigation">
             <div className="navbar-brand">
               <Link to="/" className="navbar-item">
@@ -25,6 +26,9 @@ function App() {
                 <Link to="/minard" className="navbar-item">
                   <div className="subtitle is-6">Minard</div>
                 </Link>
+                <Link to="/planning" className="navbar-item">
+                  <div className="subtitle is-6">Planning Applications</div>
+                </Link>
               </div>
             </div>
           </div>
@@ -34,6 +38,9 @@ function App() {
             </Route>
             <Route path="/minard">
               <Minard />
+            </Route>
+            <Route path="/planning">
+              <Planning />
             </Route>
             <Route path="/">
               <Welcome />

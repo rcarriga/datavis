@@ -1,21 +1,23 @@
 import Papa from "papaparse"
 import { useState, useEffect } from "react"
 
-export const useData = <A = any>(source: string): A => {
-  const [data, setData] = useState([] as any)
+export const useData = <A = any>(source: string, type: "CSV" | "JSON" = "CSV", defaultVal?: A): A => {
+  const [data, setData] = useState(defaultVal || ([] as any))
   useEffect(() => {
-    fetch(`data/${source}`).then(response => {
-      response.text().then(csvData => {
-        Papa.parse(csvData, {
-          header: true,
-          skipEmptyLines: true,
-          complete: function(results) {
-            setData(results.data)
-          }
+    fetch(`data/${source}`).then((response) => {
+      if (type === "CSV")
+        response.text().then((csvData) => {
+          Papa.parse(csvData, {
+            header: true,
+            skipEmptyLines: true,
+            complete: function (results) {
+              setData(results.data)
+            },
+          })
         })
-      })
+      else response.json().then(setData)
     })
-  }, [source])
+  }, [source, type])
   return data
 }
 
