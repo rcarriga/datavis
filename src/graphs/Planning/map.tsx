@@ -35,23 +35,21 @@ const DecisionMap = ({ data }: { data: Data }) => {
   const [year, setYear] = useState(2011)
   const [month, setMonth] = useState("Jan" as Month)
   return (
-    <div className="container" ref={ref} style={{ height: "100%" }}>
-      <div className="columns">
-        <div className="column is-three-quarters">
-          <Map heightRef={ref} data={data} year={year} month={month} />
-        </div>
-        <div className="column">
-          <Controls
-            {...{
-              month,
-              setYear,
-              years: _.keys(data.points).map(Number),
-              year,
-              setMonth,
-              months: _.keys(data.points[year] || {}).map(Number),
-            }}
-          />
-        </div>
+    <div className="columns" ref={ref}>
+      <div className="column is-three-quarters">
+        <Map data={data} year={year} month={month} />
+      </div>
+      <div className="column">
+        <Controls
+          {...{
+            month,
+            setYear,
+            years: _.keys(data.points).map(Number),
+            year,
+            setMonth,
+            months: _.keys(data.points[year] || {}).map(Number),
+          }}
+        />
       </div>
     </div>
   )
@@ -113,20 +111,7 @@ const Controls = (props: ControlProps) => {
   )
 }
 
-const Map = (props: {
-  data: Data
-  year: number
-  month: Month
-  heightRef: React.MutableRefObject<HTMLDivElement | null>
-}) => {
-  const ref = props.heightRef
-  const [height, setHeight] = useState(0)
-  useEffect(() => {
-    const div = ref.current
-    if (div !== null) {
-      setHeight(div.clientHeight)
-    }
-  }, [ref])
+const Map = (props: { data: Data; year: number; month: Month }) => {
   const monthData = props.data.points[props.year]?.[props.month]
   const createSeriesWithDecision = (decision: Decision) =>
     createSeries(
@@ -134,25 +119,18 @@ const Map = (props: {
       monthData.filter((point) => point.decision === decision)
     )
   const series = monthData ? decisions.map(createSeriesWithDecision) : []
-  return <HighchartsReact options={createOptions(height, series)} highcharts={Highcharts} constructorType="mapChart" />
+  return <HighchartsReact options={createOptions(series)} highcharts={Highcharts} constructorType="mapChart" />
 }
 
-const createOptions = (height: number, series: Highcharts.SeriesMappointOptions[]): Highcharts.Options => ({
+const createOptions = (series: Highcharts.SeriesMappointOptions[]): Highcharts.Options => ({
   chart: {
     ...({ map: ireland } as any),
-    height: height,
+    height: "100%",
     animation: {},
-    backgroundColor: "#262626",
-  },
-  legend: {
-    itemStyle: { color: "#F8F8F8", cursor: "pointer", fontSize: "12px", fontWeight: "bold", textOverflow: "ellipsis" },
   },
   credits: { enabled: false },
   title: {
     text: "Decisions of Planning Applications",
-    style: {
-      color: "#F8F8F8",
-    },
   },
   tooltip: {
     enabled: false,

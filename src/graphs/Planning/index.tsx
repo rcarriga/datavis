@@ -8,15 +8,19 @@ import Words from "./words"
 const Planning = () => {
   const data: Data = useData("points.json", "JSON", { points: {}, words: {} } as Data)
   return (
-    <div className="has-background-white" style={{ height: "100%", width: "100%" }}>
+    <div className="has-background-light">
       <Title
         name="Planning Applications Ireland"
         subtext="Submission for Assignment 3"
         background="danger"
         text="light"
       />
-      <DecisionMap data={data} />
-      <Words data={data} />
+      <div className="container has-background-white">
+        <div className="box">
+          <DecisionMap data={data} />
+          <Words data={data} />
+        </div>
+      </div>
     </div>
   )
 }
