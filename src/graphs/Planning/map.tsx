@@ -67,46 +67,68 @@ type ControlProps = {
 
 const Controls = (props: ControlProps) => {
   const { year, month, years, setYear, setMonth } = props
-  const [play, setPlay] = useState(false)
+  const play = useRef(false)
+  const [, update] = useState({})
   useEffect(() => {
     setTimeout(() => {
-      if (play) {
+      if (play.current) {
         const [nMonth, nYear] = nextMonth(month, year, years)
         setMonth(nMonth)
         if (nYear !== year) setYear(nYear)
       }
     }, 1000)
-  }, [play, year, month, setMonth, setYear, years])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [play.current, year, month, setMonth, setYear, years])
   return (
-    <div className="container" style={{ maxWidth: 300, marginTop: "40px" }}>
-      <strong>Year</strong>
-      <div>{year}</div>
-      <div>
-        <Slider
-          max={years.length - 1}
-          value={years.indexOf(year)}
-          onChange={(_, newVal) => typeof newVal === "number" && setYear(years[newVal])}
-        />
-      </div>
-      <strong>Month</strong>
-      <div>{month}</div>
-      <div>
-        <Slider
-          max={11}
-          value={monthNames.indexOf(month)}
-          onChange={(_, newVal) => typeof newVal === "number" && setMonth(monthNames[newVal])}
-        />
-      </div>
+    <div className="container" style={{ maxWidth: 250, marginTop: "40px" }}>
+      <div className="box has-background-light">
+        <strong>Year</strong>
+        <div>{year}</div>
+        <div>
+          <Slider
+            max={years.length - 1}
+            value={years.indexOf(year)}
+            onChange={(_, newVal) => typeof newVal === "number" && setYear(years[newVal])}
+          />
+        </div>
+        <strong>Month</strong>
+        <div>{month}</div>
+        <div>
+          <Slider
+            max={11}
+            value={monthNames.indexOf(month)}
+            onChange={(_, newVal) => typeof newVal === "number" && setMonth(monthNames[newVal])}
+          />
+        </div>
 
-      {play ? (
-        <IconButton onClick={() => setPlay(false)}>
-          <PauseIcon />
-        </IconButton>
-      ) : (
-        <IconButton onClick={() => setPlay(true)}>
-          <PlayIcon />
-        </IconButton>
-      )}
+        {play.current ? (
+          <div
+            onClick={() => {
+              update({})
+              play.current = false
+            }}
+            style={{ cursor: "pointer", display: "flex" }}
+          >
+            <IconButton>
+              <PauseIcon />
+            </IconButton>
+            <p style={{ cursor: "pointer", lineHeight: "45px" }}>Pause Timeline</p>
+          </div>
+        ) : (
+          <div
+            style={{ cursor: "pointer", display: "flex" }}
+            onClick={() => {
+              update({})
+              play.current = true
+            }}
+          >
+            <IconButton>
+              <PlayIcon />
+            </IconButton>
+            <p style={{ cursor: "pointer", lineHeight: "45px" }}>Play Timeline</p>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
