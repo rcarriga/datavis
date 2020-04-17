@@ -23,7 +23,6 @@ const useOptions = (data: Data): Highcharts.Options => {
   const formatted = formatWordCounts(data.words)
   return {
     chart: {
-      animation: false,
       type: isBubble.current ? "packedbubble" : "column",
       height: "70%",
       events: {
@@ -48,7 +47,6 @@ const useOptions = (data: Data): Highcharts.Options => {
     plotOptions: {
       series: {
         stacking: "normal",
-        animation: false,
       },
       packedbubble: {
         minSize: "20%",
