@@ -74,7 +74,7 @@ def clean_decision(decision: str):
         return CONDITIONAL
     if search_keyword(["REFUSE", "INVALID"]) or uppered == "R":
         return REFUSED
-    return "N/A"
+    raise Exception("Couldn't parse decision")
 
 
 def create_point(feature: Dict, handler: DataHandler) -> Optional[dict]:
@@ -95,7 +95,6 @@ def create_point(feature: Dict, handler: DataHandler) -> Optional[dict]:
         handler.handle_point(point, props["DevelopmentDescription"])
         return point
     except Exception as e:
-        print(f"Error {e} with feature: {json.dumps(feature, indent=2)}")
         return None
 
 
