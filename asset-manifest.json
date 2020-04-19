@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/datavis/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/datavis/static/js/main.f6f2a9dd.chunk.js",
+    "main.js.map": "/datavis/static/js/main.f6f2a9dd.chunk.js.map",
+    "runtime-main.js": "/datavis/static/js/runtime-main.a7cced7b.js",
+    "runtime-main.js.map": "/datavis/static/js/runtime-main.a7cced7b.js.map",
+    "static/css/2.4edb0015.chunk.css": "/datavis/static/css/2.4edb0015.chunk.css",
+    "static/js/2.78a0e238.chunk.js": "/datavis/static/js/2.78a0e238.chunk.js",
+    "static/js/2.78a0e238.chunk.js.map": "/datavis/static/js/2.78a0e238.chunk.js.map",
+    "index.html": "/datavis/index.html",
+    "precache-manifest.35bdd305f993a161125dd8d7cc652667.js": "/datavis/precache-manifest.35bdd305f993a161125dd8d7cc652667.js",
+    "service-worker.js": "/datavis/service-worker.js",
+    "static/css/2.4edb0015.chunk.css.map": "/datavis/static/css/2.4edb0015.chunk.css.map",
+    "static/css/main.5ecd60fb.chunk.css.map": "/datavis/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.78a0e238.chunk.js.LICENSE.txt": "/datavis/static/js/2.78a0e238.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/datavis/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a7cced7b.js",
+    "static/css/2.4edb0015.chunk.css",
+    "static/js/2.78a0e238.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.f6f2a9dd.chunk.js"
+  ]
+}
