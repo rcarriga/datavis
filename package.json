@@ -25,7 +25,7 @@
     "chroma-js": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "font-awesome": "^4.7.0",
-    "highcharts": "^8.0.4",
+    "highcharts": "^9.0.0",
     "highcharts-react-official": "^3.0.0",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
